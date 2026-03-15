@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Fracto.API/Fracto.API.csproj" />
+  <Project Path="Fracto.Data/Fracto.Data.csproj" />
+  <Project Path="Fracto.Frontend/Fracto.Frontend.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>

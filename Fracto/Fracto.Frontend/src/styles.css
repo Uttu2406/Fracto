@@ -1,0 +1,106 @@
+/* RESET */
+body {
+  margin: 0;
+  background-color: #F0F4F8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* NORMAL HORIZONTAL NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 70px;
+  background: #0F2854; /* Deep Navy */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none; /* Removes bullets */
+  margin: 0;
+  padding: 0;
+  gap: 30px; /* Modern way to space items */
+}
+
+  .nav-links a {
+    text-decoration: none;
+    color: #BDE8F5;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+  }
+
+    .nav-links a:hover {
+      color: #FFFFFF;
+    }
+
+    .nav-links a.active {
+      color: #FFFFFF;
+      border-bottom: 2px solid #BDE8F5;
+    }
+
+/* THE FIX FOR SEARCH & BOOKING STRETCHING */
+.main-container {
+  display: flex;
+  justify-content: center; /* This is the horizontal center */
+  align-items: center; /* This is the vertical center */
+  width: 100%; /* Ensure it spans the whole screen */
+  min-height: 80vh; /* Gives it vertical space to move */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* This targets the actual content of Login, Search, and Booking */
+.auth-container, .dashboard-container, .search-container, .booking-container,
+form, section {
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 450px; /* This stops the stretching you saw */
+  box-sizing: border-box;
+}
+
+/* FORM ELEMENTS */
+h2 {
+  color: #0F2854;
+  margin-top: 0;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.primary-btn {
+  width: 100%;
+  background: #1C4D8D; /* Primary Blue */
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+}
