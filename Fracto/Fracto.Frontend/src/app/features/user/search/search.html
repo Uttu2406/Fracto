@@ -1,0 +1,99 @@
+<h1 class="page-title">
+  <i class="fas fa-stethoscope"></i> Find a Doctor
+</h1>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="search()">
+    <div class="filter-grid">
+
+      <div class="form-group">
+        <label>City</label>
+        <input class="form-control" formControlName="city" placeholder="e.g. Kathmandu" />
+      </div>
+
+      <div class="form-group">
+        <label>Specialization</label>
+
+
+        <select class="form-control" formControlName="specializationId">
+          <option value="">All</option>
+          <option *ngFor="let s of specializations" [value]="s.specializationId">
+            {{ s.specializationName }}
+          </option>
+        </select>
+
+
+      </div>
+
+      <div class="form-group">
+        <label>Min Rating</label>
+
+        <select class="form-control" formControlName="minRating">
+          <option value="">Any</option>
+          <option value="3">3+ Stars</option>
+          <option value="4">4+ Stars</option>
+          <option value="5">5 Stars</option>
+        </select>
+
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input class="form-control" type="date" formControlName="date" [min]="today" />
+      </div>
+
+    </div>
+
+    <div class="filter-actions">
+
+      <button class="btn btn-primary" type="submit">
+        <i class="fas fa-search"></i> Search
+      </button>
+
+      <button class="btn btn-secondary" type="button" (click)="reset()">
+        <i class="fas fa-rotate-left"></i> Reset
+      </button>
+
+    </div>
+
+  </form>
+</div>
+
+
+<div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+
+<p class="muted" *ngIf="loading">
+  <i class="fas fa-spinner fa-spin"></i> Loading doctors...
+</p>
+
+
+<div *ngIf="!loading">
+  <p class="muted" style="margin-bottom: 1rem;">{{ doctors.length }} doctor(s) found</p>
+
+  <div class="doctor-grid">
+    <div class="card doctor-card" *ngFor="let d of doctors"
+         [routerLink]="['/doctor', d.doctorId]"
+         style="cursor:pointer">
+
+      <div class="doctor-avatar">{{ d.name.charAt(0) }}</div>
+
+      <div class="doctor-info">
+        <h3>{{ d.name }}</h3>
+        <p class="spec">
+          <i class="fas fa-briefcase-medical"></i>
+          {{ d.specialization?.specializationName }}
+        </p>
+        <p class="muted">
+          <i class="fas fa-location-dot"></i> {{ d.city }}
+        </p>
+        <app-star-rating [rating]="d.rating ?? 0"></app-star-rating>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="muted" *ngIf="doctors.length === 0">
+    No doctors found. Try different filters.
+  </p>
+</div>

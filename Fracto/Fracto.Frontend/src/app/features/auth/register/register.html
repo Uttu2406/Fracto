@@ -1,0 +1,114 @@
+<div class="auth-wrap">
+  <div class="card auth-card">
+
+    <div class="auth-header">
+      <i class="fas fa-user-plus auth-icon"></i>
+      <h2>Create Account</h2>
+      <p>Join Fracto to book appointments</p>
+    </div>
+
+
+    <div class="alert alert-success" *ngIf="success">
+      <i class="fas fa-circle-check"></i> {{ success }}
+    </div>
+
+    <div class="alert alert-danger" *ngIf="error">
+      <i class="fas fa-circle-exclamation"></i> {{ error }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <div class="form-group">
+        <label>
+          <i class="fas fa-user"></i> Username
+        </label>
+
+
+        <input class="form-control"
+               [class.is-invalid]="userName.invalid && userName.touched"
+               formControlName="userName"
+               placeholder="johndoe" />
+        <div class="error-msg" *ngIf="userName.errors?.['required'] && userName.touched">
+          Username is required.
+        </div>
+
+
+        <div class="error-msg" *ngIf="userName.errors?.['minlength'] && userName.touched">
+          Username must be at least 3 characters.
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>
+          <i class="fas fa-envelope"></i> Email
+        </label>
+
+
+        <input class="form-control"
+               [class.is-invalid]="email.invalid && email.touched"
+               type="email"
+               formControlName="emailAddress"
+               placeholder="you@email.com" />
+        <div class="error-msg" *ngIf="email.invalid && email.touched">
+          Please enter a valid email.
+        </div>
+
+
+      </div>
+
+      <div class="form-group">
+        <label>
+          <i class="fas fa-lock"></i> Password
+        </label>
+
+
+        <input class="form-control"
+               [class.is-invalid]="pass.invalid && pass.touched"
+               type="password"
+               formControlName="password"
+               placeholder="Min 6 characters" />
+        <div class="error-msg" *ngIf="pass.errors?.['required'] && pass.touched">
+          Password is required.
+        </div>
+
+
+        <div class="error-msg" *ngIf="pass.errors?.['minlength'] && pass.touched">
+          Password must be at least 6 characters.
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label>
+          <i class="fas fa-lock"></i> Confirm Password
+        </label>
+
+        <input class="form-control"
+               [class.is-invalid]="confirm.touched && form.errors?.['mismatch']"
+               type="password"
+               formControlName="confirmPassword"
+               placeholder="Repeat your password" />
+        <div class="error-msg" *ngIf="confirm.touched && form.errors?.['mismatch']">
+          Passwords do not match.
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary btn-block"
+              type="submit"
+              [disabled]="loading">
+        <i class="fas fa-user-plus"></i>
+
+        {{ loading ? 'Creating account...' : 'Register' }}
+      </button>
+
+    </form>
+
+    <p class="auth-link">
+      Already have an account? :)
+      <a routerLink="/login">Login here</a>
+    </p>
+
+  </div>
+</div>

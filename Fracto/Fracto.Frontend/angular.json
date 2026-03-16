@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": "e6244b6f-8be1-4a06-99eb-d548b8cf8de8"
+    "analytics": "ad695a34-5b57-4d74-8444-81e305ca2b60"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -75,13 +75,13 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 53697
+            "port": 59750
           }
         },
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "karmaConfig": "karma.conf.js"
+            "tsConfig": "tsconfig.spec.json"
           }
         }
       }

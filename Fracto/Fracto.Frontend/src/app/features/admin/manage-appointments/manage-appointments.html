@@ -1,0 +1,71 @@
+<div class="admin-layout">
+
+  <aside class="sidebar">
+    <h2 class="sidebar-title">Admin Panel</h2>
+    <nav>
+      <a routerLink="/admin/users" routerLinkActive="active">
+        <i class="fas fa-users"></i> Users
+      </a>
+      <a routerLink="/admin/doctors" routerLinkActive="active">
+        <i class="fas fa-user-doctor"></i> Doctors
+      </a>
+      <a routerLink="/admin/specializations" routerLinkActive="active">
+        <i class="fas fa-briefcase-medical"></i> Specializations
+      </a>
+      <a routerLink="/admin/appointments" routerLinkActive="active">
+        <i class="fas fa-calendar"></i> Appointments
+      </a>
+    </nav>
+  </aside>
+
+  <div class="admin-main">
+
+    <h1 class="page-title">
+      <i class="fas fa-calendar"></i> All Appointments
+    </h1>
+
+    <p class="muted" *ngIf="loading">
+      <i class="fas fa-spinner fa-spin"></i> Loading...
+    </p>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Slot</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of appointments">
+            <td>{{ a.appointmentId }}</td>
+            <td>{{ a.userId }}</td>
+            <td>{{ a.doctor?.name ?? '—' }}</td>
+            <td>{{ a.appointmentDate | date:'mediumDate' }}</td>
+            <td>{{ a.timeSlot }}</td>
+            <td>
+              <span class="badge"
+                    [class.badge-confirmed]="a.status === 'Confirmed'"
+                    [class.badge-cancelled]="a.status === 'Cancelled'">
+                {{ a.status }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm"
+                      *ngIf="a.status === 'Confirmed'"
+                      (click)="cancel(a.appointmentId)">
+                <i class="fas fa-xmark"></i> Cancel
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

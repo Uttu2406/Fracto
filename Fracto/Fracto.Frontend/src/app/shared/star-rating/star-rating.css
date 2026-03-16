@@ -1,0 +1,12 @@
+.star {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+.star.filled {
+  color: #f59e0b;
+}
+
+.star.interactive {
+  cursor: pointer;
+}

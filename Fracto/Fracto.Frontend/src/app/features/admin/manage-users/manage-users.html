@@ -1,0 +1,105 @@
+<div class="admin-layout">
+
+  <aside class="sidebar">
+    <h2 class="sidebar-title">Admin Panel</h2>
+    <nav>
+      <a routerLink="/admin/users" routerLinkActive="active">
+        <i class="fas fa-users"></i> Users
+      </a>
+      <a routerLink="/admin/doctors" routerLinkActive="active">
+        <i class="fas fa-user-doctor"></i> Doctors
+      </a>
+      <a routerLink="/admin/specializations" routerLinkActive="active">
+        <i class="fas fa-briefcase-medical"></i> Specializations
+      </a>
+      <a routerLink="/admin/appointments" routerLinkActive="active">
+        <i class="fas fa-calendar"></i> Appointments
+      </a>
+    </nav>
+  </aside>
+
+  <div class="admin-main">
+
+    <div class="page-header">
+      <h1 class="page-title">
+        <i class="fas fa-users"></i> Manage Users
+      </h1>
+      <button class="btn btn-primary btn-sm" (click)="openAdd()">
+        <i class="fas fa-plus"></i> Add User
+      </button>
+    </div>
+
+    <div class="alert alert-success" *ngIf="success">{{ success }}</div>
+    <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+    <div class="card" *ngIf="showForm">
+      <h3 style="margin-bottom: 1rem;">{{ editingId ? 'Edit User' : 'New User' }}</h3>
+      <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" formControlName="userName" />
+            <div class="error-msg" *ngIf="form.get('userName')?.invalid && form.get('userName')?.touched">Required</div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="email" formControlName="emailAddress" />
+            <div class="error-msg" *ngIf="form.get('emailAddress')?.invalid && form.get('emailAddress')?.touched">Valid email required</div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" formControlName="password" />
+          </div>
+          <div class="form-group">
+            <label>Role</label>
+            <select class="form-control" formControlName="role">
+              <option>User</option>
+              <option>Admin</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+          <button class="btn btn-success btn-sm" type="submit">Save</button>
+          <button class="btn btn-secondary btn-sm" type="button" (click)="showForm = false">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>{{ u.userId }}</td>
+            <td>{{ u.userName }}</td>
+            <td>{{ u.emailAddress }}</td>
+            <td>
+              <span class="badge"
+                    [class.badge-confirmed]="u.role === 'Admin'"
+                    [class.badge-cancelled]="u.role === 'User'">
+                {{ u.role }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-secondary btn-sm" (click)="openEdit(u)">
+                <i class="fas fa-pen"></i> Edit
+              </button>
+              <button class="btn btn-danger btn-sm" style="margin-left: 6px;" (click)="delete(u.userId)">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

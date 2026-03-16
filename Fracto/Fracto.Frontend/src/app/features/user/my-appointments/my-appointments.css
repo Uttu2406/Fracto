@@ -1,0 +1,29 @@
+.appt-card {
+  margin-bottom: 1rem;
+}
+
+.appt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+  .appt-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+.appt-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rate-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

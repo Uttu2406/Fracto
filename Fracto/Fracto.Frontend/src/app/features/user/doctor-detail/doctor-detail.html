@@ -1,0 +1,90 @@
+
+<p class="muted" *ngIf="loading">
+  <i class="fas fa-spinner fa-spin"></i> Loading...
+</p>
+
+
+<div class="alert alert-danger" *ngIf="error && !doctor">{{ error }}</div>
+
+
+<div *ngIf="doctor">
+
+
+  <div class="card profile-card">
+    <div class="doctor-avatar">{{ doctor.name.charAt(0) }}</div>
+    <div>
+      <h1 class="page-title" style="margin-bottom: 4px;">
+        Dr. {{ doctor.name }}
+      </h1>
+      <p class="spec">
+        <i class="fas fa-briefcase-medical"></i>
+        {{ doctor.specialization?.specializationName }}
+      </p>
+      <p class="muted">
+        <i class="fas fa-location-dot"></i> {{ doctor.city }}
+      </p>
+      <app-star-rating [rating]="doctor.rating ?? 0"></app-star-rating>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h2 class="section-title">
+      <i class="fas fa-calendar-plus"></i> Book an Appointment
+    </h2>
+
+    <div class="alert alert-success" *ngIf="success">
+      <i class="fas fa-circle-check"></i> {{ success }}
+    </div>
+    <div class="alert alert-danger" *ngIf="error && doctor">
+      <i class="fas fa-circle-exclamation"></i> {{ error }}
+    </div>
+
+
+    <div class="form-group">
+      <label>Select Date</label>
+      <input class="form-control date-input"
+             type="date"
+             [(ngModel)]="selectedDate"
+             [min]="today"
+             (change)="onDateChange()" />
+    </div>
+
+
+    <div *ngIf="selectedDate">
+      <p class="muted" *ngIf="slotsLoading">
+        <i class="fas fa-spinner fa-spin"></i> Loading slots...
+      </p>
+
+      <div *ngIf="!slotsLoading">
+        <p class="slots-label" *ngIf="slots.length > 0">Available Time Slots</p>
+        <div class="slots-grid">
+          <button *ngFor="let slot of slots"
+                  class="slot-btn"
+                  [class.selected]="selectedSlot === slot"
+                  (click)="selectedSlot = slot">
+            <i class="fas fa-clock"></i> {{ slot }}
+          </button>
+        </div>
+        <p class="muted" *ngIf="slots.length === 0">
+          No slots available for this date.
+        </p>
+      </div>
+    </div>
+
+
+    <button class="btn btn-success"
+            style="margin-top: 1.5rem;"
+            (click)="book()"
+            [disabled]="!selectedSlot">
+      <i class="fas fa-calendar-check"></i> Confirm Appointment
+    </button>
+
+
+    <p class="muted" style="margin-top: 0.8rem;" *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/login" style="color: #3b82f6;">Login</a>
+      to book an appointment.
+    </p>
+
+  </div>
+</div>

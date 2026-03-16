@@ -13,9 +13,11 @@ namespace Fracto.API.Services
 
         public string CreateToken(User user)
         {
-            var claims = new List<Claim> {
-                new Claim(JwtRegisteredClaimNames.Email, user.EmailAddress),
-                new Claim(ClaimTypes.Role, user.Role)
+            var claims = new List<Claim>
+{
+                new Claim(ClaimTypes.Email, user.EmailAddress),
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));

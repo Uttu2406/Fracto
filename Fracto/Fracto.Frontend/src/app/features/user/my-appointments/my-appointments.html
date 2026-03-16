@@ -1,0 +1,66 @@
+<h1 class="page-title">
+  <i class="fas fa-calendar-check"></i> My Appointments
+</h1>
+
+<div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+
+<p class="muted" *ngIf="loading">
+  <i class="fas fa-spinner fa-spin"></i> Loading...
+</p>
+
+<div *ngIf="!loading">
+
+  <p class="muted" *ngIf="appointments.length === 0">
+    No appointments yet.
+    <a routerLink="/search" style="color: #3b82f6;">Find a doctor →</a>
+  </p>
+
+  <div class="card appt-card" *ngFor="let a of appointments">
+
+    <div class="appt-header">
+      <div>
+        <h3>
+          <i class="fas fa-user-doctor"></i>
+          Dr. {{ a.doctor?.name ?? 'Doctor #' + a.doctorId }}
+        </h3>
+        <p class="muted">
+          <i class="fas fa-calendar"></i>
+          {{ a.appointmentDate | date:'mediumDate' }} at {{ a.timeSlot }}
+        </p>
+      </div>
+      <span class="badge"
+            [class.badge-confirmed]="a.status === 'Confirmed'"
+            [class.badge-cancelled]="a.status === 'Cancelled'">
+        {{ a.status }}
+      </span>
+    </div>
+
+    <div class="appt-actions">
+
+      <button class="btn btn-danger btn-sm"
+              *ngIf="a.status === 'Confirmed' && !isPast(a.appointmentDate)"
+              (click)="cancel(a.appointmentId)">
+        <i class="fas fa-xmark"></i> Cancel
+      </button>
+
+      <div class="rate-section"
+           *ngIf="a.status === 'Confirmed' && isPast(a.appointmentDate) && !ratedSet.has(a.appointmentId)">
+        <span class="muted">Rate:</span>
+        <app-star-rating [interactive]="true"
+                         [rating]="ratingMap[a.appointmentId] ?? 0"
+                         (ratingSelected)="ratingMap[a.appointmentId] = $event">
+        </app-star-rating>
+        <button class="btn btn-primary btn-sm"
+                (click)="submitRating(a)"
+                [disabled]="!ratingMap[a.appointmentId]">
+          Submit
+        </button>
+      </div>
+
+      <span class="muted" *ngIf="ratedSet.has(a.appointmentId)">
+        <i class="fas fa-circle-check" style="color: #10b981;"></i> Rated
+      </span>
+
+    </div>
+  </div>
+</div>

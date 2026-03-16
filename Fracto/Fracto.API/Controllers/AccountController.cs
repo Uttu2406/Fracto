@@ -28,11 +28,17 @@ namespace Fracto.API.Controllers
                 return BadRequest("Username is already taken");
             }
 
+            if (await _context.Users.AnyAsync(x => x.EmailAddress == user.EmailAddress))
+            {
+                return BadRequest("Email is already registered");
+            }
+
+            user.Role = "User";
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok();
-
+            return Ok(new { message = "Registration successful" });
         }
 
 

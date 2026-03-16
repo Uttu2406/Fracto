@@ -1,28 +1,71 @@
-import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
-import { App } from './app';
-import { Login } from './components/login/login';
-import { DoctorSearch } from './components/doctor-search/doctor-search';
-import { Booking } from './components/booking/booking';
-import { Register } from './components/register/register';
+import { AppComponent } from './app';
+import { AuthInterceptor } from './core/interceptors/auth-interceptor';
+
+
+// Shared haru
+import { HeaderComponent } from './shared/header/header';
+import { StarRatingComponent } from './shared/star-rating/star-rating';
+
+
+// Auth ko page
+import { LoginComponent } from './features/auth/login/login';
+import { RegisterComponent } from './features/auth/register/register';
+
+
+// User ko page
+import { SearchComponent } from './features/user/search/search';
+import { DoctorDetailComponent } from './features/user/doctor-detail/doctor-detail';
+import { MyAppointmentsComponent } from './features/user/my-appointments/my-appointments';
+
+
+// Admin ko page
+import { DashboardComponent } from './features/admin/dashboard/dashboard';
+import { ManageUsersComponent } from './features/admin/manage-users/manage-users';
+import { ManageDoctorsComponent } from './features/admin/manage-doctors/manage-doctors';
+import { ManageSpecializationsComponent } from './features/admin/manage-specializations/manage-specializations';
+import { ManageAppointmentsComponent } from './features/admin/manage-appointments/manage-appointments';
+
 
 @NgModule({
   declarations: [
-    App,
-    Login,
-    DoctorSearch,
-    Booking,
-    Register
+    AppComponent,
+    HeaderComponent,
+    StarRatingComponent,
+    LoginComponent,
+    RegisterComponent,
+    SearchComponent,
+    DoctorDetailComponent,
+    MyAppointmentsComponent,
+    DashboardComponent,
+    ManageUsersComponent,
+    ManageDoctorsComponent,
+    ManageSpecializationsComponent,
+    ManageAppointmentsComponent,
   ],
+
+
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule,        
+    AppRoutingModule,     
+    ReactiveFormsModule,  
+    FormsModule,         
+    HttpClientModule,     // Api call ko lai
   ],
+
+
   providers: [
-    provideBrowserGlobalErrorListeners(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } // interceptorrrrrr
   ],
-  bootstrap: [App]
+
+
+  bootstrap: [AppComponent] 
+
 })
+
 export class AppModule { }

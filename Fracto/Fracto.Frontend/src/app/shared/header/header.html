@@ -1,0 +1,51 @@
+<header class="header">
+  <div class="header-inner">
+
+    <a routerLink="/search" class="logo">
+      🏥 <span>Fracto</span>
+    </a>
+
+
+
+    <nav class="nav">
+      <a routerLink="/search" routerLinkActive="active">
+        <i class="fas fa-search"></i> Find Doctors
+      </a>
+
+      <a routerLink="/my-appointments" routerLinkActive="active" *ngIf="auth.isLoggedIn() && !auth.isAdmin()">
+        <i class="fas fa-calendar-check"></i> My Appointments
+      </a>
+
+      <a routerLink="/admin" routerLinkActive="active" *ngIf="auth.isAdmin()">
+        <i class="fas fa-shield-halved"></i> Admin Panel
+      </a>
+    </nav>
+
+
+
+    <div class="header-right">
+
+      <ng-container *ngIf="auth.isLoggedIn()">
+        <span class="greeting">
+          <i class="fas fa-user-circle"></i>
+          Hello, {{ auth.getPayload()?.unique_name ?? auth.getPayload()?.email ?? 'User' }}
+        </span>
+        <button class="btn btn-logout" (click)="logout()">
+          <i class="fas fa-right-from-bracket"></i> Logout
+        </button>
+      </ng-container>
+
+
+      <ng-container *ngIf="!auth.isLoggedIn()">
+        <a routerLink="/login" class="btn btn-login">
+          <i class="fas fa-right-to-bracket"></i> Login
+        </a>
+        <a routerLink="/register" class="btn btn-register">
+          <i class="fas fa-user-plus"></i> Register
+        </a>
+      </ng-container>
+
+
+    </div>
+  </div>
+</header>
