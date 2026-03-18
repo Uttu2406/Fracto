@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppointmentService } from '../../../core/services/appointment';
 import { RatingService } from '../../../core/services/rating';
 import { AuthService } from '../../../core/services/auth';
@@ -20,7 +20,8 @@ export class MyAppointmentsComponent implements OnInit {
   constructor(
     private apptSvc: AppointmentService,
     private ratingSvc: RatingService,
-    public auth: AuthService
+    public auth: AuthService,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -33,10 +34,12 @@ export class MyAppointmentsComponent implements OnInit {
       next: (data: any[]) => {
         this.appointments = data.filter(a => a.userId === this.auth.getUserId());
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'Could not load appointments.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -44,8 +47,11 @@ export class MyAppointmentsComponent implements OnInit {
   cancel(id: number) {
     if (!confirm('Are you sure you want to cancel?')) return;
     this.apptSvc.cancel(id).subscribe({
-      next: () => this.load(),
-      error: err => alert(err.error?.message ?? 'Could not cancel.')
+      next: () => {
+        this.load();
+        this.cdr.detectChanges();
+      },
+      error: (err: any) => alert(err.error?.message ?? 'Could not cancel.')
     });
   }
 
@@ -62,7 +68,7 @@ export class MyAppointmentsComponent implements OnInit {
       doctorRating: rating
     }).subscribe({
       next: () => this.ratedSet.add(appt.appointmentId),
-      error: err => alert(err.error || 'Rating failed.')
+      error: (err: any) => alert(err.error || 'Rating failed.')
     });
   }
 }

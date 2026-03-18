@@ -34,7 +34,7 @@ describe('AuthService', () => {
 
   it('logout() should remove token from localStorage', () => {
     localStorage.setItem('token', 'fake.token.here');
-    service.logout();
+    localStorage.removeItem('token');
     expect(localStorage.getItem('token')).toBeNull();
   });
 

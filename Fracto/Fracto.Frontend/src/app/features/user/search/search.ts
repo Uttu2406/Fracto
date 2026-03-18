@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DoctorService } from '../../../core/services/doctor';
 import { SpecializationService } from '../../../core/services/specialization';
@@ -16,10 +16,9 @@ export class SearchComponent implements OnInit {
   specializations: any[] = [];
   loading = false;
   error = '';
-
   today = new Date().toISOString().split('T')[0];
 
-  constructor(private fb: FormBuilder,private doctorSvc: DoctorService,private specSvc: SpecializationService)
+  constructor(private fb: FormBuilder, private doctorSvc: DoctorService, private specSvc: SpecializationService, private cdr: ChangeDetectorRef)
   {
     this.form = this.fb.group({
       city: [''],
@@ -29,31 +28,32 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  ngOnInit()
-  {
-
-    this.specSvc.getAll().subscribe(data => this.specializations = data);
+  ngOnInit() {
+    this.specSvc.getAll().subscribe((data: any) => {
+      this.specializations = data;
+      this.cdr.detectChanges();
+    });
     this.search();
   }
 
-  search()
-  {
+  search() {
     this.loading = true;
     this.error = '';
     this.doctorSvc.search(this.form.value).subscribe({
       next: (res: any) => {
         this.doctors = Array.isArray(res) ? res : (res.data ?? []);
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'Failed to load doctors.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
 
-  reset()
-  {
+  reset() {
     this.form.reset();
     this.search();
   }

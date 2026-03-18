@@ -3,52 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\core\\services\\auth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\core\\services\\auth.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\core\\services\\auth.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\core\\services\\auth.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\angular.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\angular.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\user\\search\\search.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\user\\search\\search.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\auth\\login\\login.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\auth\\login\\login.spec.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53F2A8CB-8258-2128-1727-E6A0E1C65D9F}|Fracto.API\\Fracto.API.csproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53F2A8CB-8258-2128-1727-E6A0E1C65D9F}|Fracto.API\\Fracto.API.csproj|solutionrelative:fracto.api\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\shared\\header\\header.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\shared\\header\\header.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\user\\search\\search.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\user\\search\\search.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{53F2A8CB-8258-2128-1727-E6A0E1C65D9F}|Fracto.API\\Fracto.API.csproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.api\\controllers\\specializationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{53F2A8CB-8258-2128-1727-E6A0E1C65D9F}|Fracto.API\\Fracto.API.csproj|solutionrelative:fracto.api\\controllers\\specializationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{3FCC1563-D8E3-A100-26CF-CBCDCBE11066}|Fracto.Frontend\\Fracto.Frontend.esproj|solutionrelative:fracto.frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{53F2A8CB-8258-2128-1727-E6A0E1C65D9F}|Fracto.API\\Fracto.API.csproj|c:\\users\\kiit01\\desktop\\wipro nga\\capstone project\\fracto\\fracto\\fracto.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -65,18 +21,18 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 332,
-          "SelectedChildIndex": 3,
+          "DockedHeight": 217,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 1,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\appsettings.json",
               "RelativeDocumentMoniker": "Fracto.API\\appsettings.json",
               "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\appsettings.json",
               "RelativeToolTip": "Fracto.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-14T11:32:03.397Z",
               "IsPinned": true,
@@ -84,171 +40,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Program.cs",
               "RelativeDocumentMoniker": "Fracto.API\\Program.cs",
               "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Program.cs",
               "RelativeToolTip": "Fracto.API\\Program.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAAAFsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAmwGAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-12T05:48:31.877Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "angular.json",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\angular.json",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\angular.json",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\angular.json",
-              "RelativeToolTip": "Fracto.Frontend\\angular.json",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAcwFUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-16T10:08:18.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "auth.ts",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\core\\services\\auth.ts",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\core\\services\\auth.ts",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\core\\services\\auth.ts",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\core\\services\\auth.ts",
-              "ViewState": "AgIAABYAAAAAAAAAAAAkwBoAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T10:02:51.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "search.spec.ts",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\search\\search.spec.ts",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\user\\search\\search.spec.ts",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\search\\search.spec.ts",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\user\\search\\search.spec.ts",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAqwDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T10:00:47.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "login.spec.ts",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\auth\\login\\login.spec.ts",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\auth\\login\\login.spec.ts",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\auth\\login\\login.spec.ts",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\auth\\login\\login.spec.ts",
-              "ViewState": "AgIAABAAAAAAAAAAAAAqwDUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T10:00:33.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "auth.spec.ts",
               "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\core\\services\\auth.spec.ts",
               "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\core\\services\\auth.spec.ts",
               "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\core\\services\\auth.spec.ts",
               "RelativeToolTip": "Fracto.Frontend\\src\\app\\core\\services\\auth.spec.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T10:00:09.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "doctor-detail.ts",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.ts",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAAGUAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T09:54:39.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "doctor-detail.html",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\user\\doctor-detail\\doctor-detail.html",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-16T09:48:41.7Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "header.html",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\shared\\header\\header.html",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\shared\\header\\header.html",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\shared\\header\\header.html",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\shared\\header\\header.html",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB4AAABbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-16T09:40:21.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DoctorsController.cs",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Controllers\\DoctorsController.cs",
-              "RelativeDocumentMoniker": "Fracto.API\\Controllers\\DoctorsController.cs",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Controllers\\DoctorsController.cs",
-              "RelativeToolTip": "Fracto.API\\Controllers\\DoctorsController.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAswHAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T09:39:22.031Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "search.html",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\search\\search.html",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\user\\search\\search.html",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\user\\search\\search.html",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\user\\search\\search.html",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAEwAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-03-16T09:38:16.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SpecializationsController.cs",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Controllers\\SpecializationsController.cs",
-              "RelativeDocumentMoniker": "Fracto.API\\Controllers\\SpecializationsController.cs",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.API\\Controllers\\SpecializationsController.cs",
-              "RelativeToolTip": "Fracto.API\\Controllers\\SpecializationsController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwB8AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-16T09:37:19.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "manage-doctors.ts",
-              "DocumentMoniker": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts",
-              "RelativeDocumentMoniker": "Fracto.Frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts",
-              "ToolTip": "C:\\Users\\KIIT01\\Desktop\\Wipro NGA\\Capstone Project\\Fracto\\Fracto\\Fracto.Frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts*",
-              "RelativeToolTip": "Fracto.Frontend\\src\\app\\features\\admin\\manage-doctors\\manage-doctors.ts*",
-              "ViewState": "AgIAADcAAAAAAAAAAAAQwEQAAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2026-03-16T09:36:04.09Z",
+              "WhenOpened": "2026-03-18T02:41:56.507Z",
               "EditorCaption": ""
             }
           ]

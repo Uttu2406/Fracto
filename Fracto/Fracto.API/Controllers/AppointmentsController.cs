@@ -16,7 +16,7 @@ namespace Fracto.API.Controllers
         public AppointmentsController(FractoDbContext context) => _context = context;
 
 
-        [HttpGet("slots")] // UC108 : Slots? (yes)
+        [HttpGet("slots")] // UC108 : Slots? (yes) // Not working wtf // Update : Display gonnnn
         [AllowAnonymous]
         public async Task<IActionResult> GetAvailableSlots(int doctorId, DateTime date)
         { 
@@ -38,7 +38,7 @@ namespace Fracto.API.Controllers
 
 
 
-        [HttpGet]
+        [HttpGet] //Search func
         public async Task<IActionResult> GetAllAppointments()
         {
             var appointments = await _context.Appointments
@@ -48,6 +48,7 @@ namespace Fracto.API.Controllers
             return Ok(appointments);
         }
 
+
         [HttpPost] // UC109, UC110, UC205, UC206 (Merged later)
         public async Task<IActionResult> BookAppointment(Appointment appointment) 
         { 
@@ -56,7 +57,7 @@ namespace Fracto.API.Controllers
                 return BadRequest("Invalid Date: Appointments cannot be booked for the past.");
             }
 
-            var isSlotTaken = await _context.Appointments.AnyAsync(a => // correct eror paxi hai (er1)
+            var isSlotTaken = await _context.Appointments.AnyAsync(a => // correct eror paxi hai (rer1) // Done :)
                 a.DoctorId == appointment.DoctorId &&
                 a.AppointmentDate.Date == appointment.AppointmentDate.Date &&
                 a.TimeSlot == appointment.TimeSlot &&

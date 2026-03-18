@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppointmentService } from '../../../core/services/appointment';
 
 @Component({
@@ -12,18 +12,25 @@ export class ManageAppointmentsComponent implements OnInit {
   appointments: any[] = [];
   loading = false;
 
-  constructor(private apptSvc: AppointmentService) { }
+  constructor(
+    private apptSvc: AppointmentService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit() { this.load(); }
 
   load() {
     this.loading = true;
     this.apptSvc.getAll().subscribe({
-      next: d => {
+      next: (d: any) => {
         this.appointments = d;
         this.loading = false;
+        this.cdr.detectChanges();
       },
-      error: () => this.loading = false
+      error: () => {
+        this.loading = false;
+        this.cdr.detectChanges();
+      }
     });
   }
 

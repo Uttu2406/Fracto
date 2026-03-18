@@ -41,10 +41,12 @@ export class DoctorDetailComponent implements OnInit {
         console.log('Doctor data :', d);
         this.doctor = d;
         this.loading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.error = 'Doctor not found.';
         this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
