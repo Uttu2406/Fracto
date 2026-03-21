@@ -13,7 +13,6 @@ namespace Fracto.Data.Entities
         [Required]
         public int DoctorId { get; set; }
         [ForeignKey("DoctorId")]
-
         [JsonIgnore]
         public Doctor? Doctor { get; set; }
 

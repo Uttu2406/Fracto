@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SpecializationService } from '../../../core/services/specialization';
 
@@ -19,7 +19,8 @@ export class ManageSpecializationsComponent implements OnInit {
 
   constructor(
     private specSvc: SpecializationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       specializationName: ['', Validators.required]
@@ -29,7 +30,10 @@ export class ManageSpecializationsComponent implements OnInit {
   ngOnInit() { this.load(); }
 
   load() {
-    this.specSvc.getAll().subscribe(d => this.specs = d);
+    this.specSvc.getAll().subscribe((d: any) => {
+      this.specs = d;
+      this.cdr.detectChanges();
+    });
   }
 
   openAdd() {
@@ -58,7 +62,7 @@ export class ManageSpecializationsComponent implements OnInit {
         this.success = 'Saved successfully!';
         setTimeout(() => this.success = '', 2000);
       },
-      error: err => this.error = err.error || 'Save failed.'
+      error: (err: any) => this.error = err.error || 'Save failed.'
     });
   }
 
@@ -66,7 +70,7 @@ export class ManageSpecializationsComponent implements OnInit {
     if (!confirm('Delete this specialization?')) return;
     this.specSvc.delete(id).subscribe({
       next: () => this.load(),
-      error: err => alert(err.error || 'Cannot delete — linked to doctors.')
+      error: (err: any) => alert(err.error || 'Cannot delete — linked to doctors.')
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DoctorService } from '../../../core/services/doctor';
 import { SpecializationService } from '../../../core/services/specialization';
@@ -22,58 +22,111 @@ export class ManageDoctorsComponent implements OnInit {
   constructor(
     private doctorSvc: DoctorService,
     private specSvc: SpecializationService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
       city: ['', Validators.required],
-      specializationId: ['', Validators.required]
+      specializationId: [null, Validators.required]
     });
   }
 
   ngOnInit() {
     this.load();
-    this.specSvc.getAll().subscribe(d => this.specializations = d);
+    this.loadSpecs();
   }
 
   load() {
-    this.doctorSvc.getAll().subscribe(d => this.doctors = d);
+    this.doctorSvc.getAll().subscribe({
+      next: (data: any) => {
+        this.doctors = data;
+        this.error = ''; 
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.error = 'Failed to load doctors. Your session might have expired.';
+      }
+    });
+  }
+
+  loadSpecs() {
+    this.specSvc.getAll().subscribe({
+      next: (data: any) => {
+        this.specializations = data;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  getSpecName(specId: number): string {
+    if (!this.specializations || this.specializations.length === 0) {
+      return '...';
+    }
+    const spec = this.specializations.find(s => s.specializationId === specId);
+    return spec ? spec.specializationName : 'N/A';
   }
 
   openAdd() {
     this.editingId = null;
-    this.form.reset();
+    this.form.reset({ specializationId: null });
     this.showForm = true;
     this.error = '';
+    this.success = '';
   }
 
   openEdit(d: any) {
     this.editingId = d.doctorId;
-    this.form.patchValue(d);
+    this.form.patchValue({
+      name: d.name,
+      city: d.city,
+      specializationId: d.specializationId
+    });
     this.showForm = true;
     this.error = '';
+    this.success = '';
   }
 
   save() {
-    if (this.form.invalid) { this.form.markAllAsTouched(); return; }
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const val = this.form.value;
+    const payload = {
+      ...val,
+      specializationId: Number(val.specializationId)
+    };
+
     const req = this.editingId
-      ? this.doctorSvc.update(this.editingId, { doctorId: this.editingId, ...this.form.value })
-      : this.doctorSvc.create(this.form.value);
+      ? this.doctorSvc.update(this.editingId, { doctorId: this.editingId, ...payload })
+      : this.doctorSvc.create(payload);
+
     req.subscribe({
       next: () => {
         this.load();
         this.showForm = false;
-        this.success = 'Saved successfully!';
-        setTimeout(() => this.success = '', 2000);
+        this.success = 'Doctor saved successfully!';
+        setTimeout(() => this.success = '', 3000);
+        this.cdr.detectChanges();
       },
-      error: (err: any) => this.error = err.error || 'Save failed.'
+      error: (err: any) => {
+        this.error = typeof err.error === 'string' ? err.error : 'Save operation failed.';
+        this.cdr.detectChanges();
+      }
     });
   }
 
   delete(id: number) {
-    if (!confirm('Delete this doctor?')) return;
+    if (!confirm('Are you sure you want to delete this doctor record?')) return;
+
     this.doctorSvc.delete(id).subscribe({
-      next: () => this.load(),
+      next: () => {
+        this.load();
+        this.success = 'Doctor deleted.';
+        setTimeout(() => this.success = '', 2000);
+      },
       error: (err: any) => alert(err.error || 'Delete failed.')
     });
   }

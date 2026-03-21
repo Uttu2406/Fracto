@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../../../environments/environment';
@@ -19,7 +19,11 @@ export class ManageUsersComponent implements OnInit {
   success = '';
   private api = `${environment.apiUrl}/users`;
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
+  ) {
     this.form = this.fb.group({
       userName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
@@ -31,7 +35,10 @@ export class ManageUsersComponent implements OnInit {
   ngOnInit() { this.load(); }
 
   load() {
-    this.http.get<any[]>(this.api).subscribe(d => this.users = d);
+    this.http.get<any[]>(this.api).subscribe(d => {
+      this.users = d;
+      this.cdr.detectChanges();
+    });
   }
 
   openAdd() {
@@ -61,7 +68,7 @@ export class ManageUsersComponent implements OnInit {
         this.success = 'Saved successfully!';
         setTimeout(() => this.success = '', 2000);
       },
-      error: err => this.error = err.error || 'Save failed.'
+      error: (err: any) => this.error = err.error || 'Save failed.'
     });
   }
 
@@ -69,7 +76,7 @@ export class ManageUsersComponent implements OnInit {
     if (!confirm('Delete this user?')) return;
     this.http.delete(`${this.api}/${id}`).subscribe({
       next: () => this.load(),
-      error: err => alert(err.error || 'Delete failed.')
+      error: (err: any) => alert(err.error || 'Delete failed.')
     });
   }
 }

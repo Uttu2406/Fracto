@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Fracto.API.Controllers
 {
@@ -102,15 +103,26 @@ namespace Fracto.API.Controllers
                 return NotFound(new { message = "Appointment not found." });
             }
 
-            if (appointment.AppointmentDate.Date < DateTime.Now.Date)
+            if (appointment.AppointmentDate.Date < DateTime.UtcNow.Date)
             {
-                return BadRequest("Cannot cancel appointments that have already passed.");
+                return BadRequest(new { message = "Cannot cancel appointments that have already passed." });
             }
 
-            
-            var currentUserId = int.Parse(User.FindFirst("UserId")?.Value ?? "0"); // jwt le user verify garne?
+           
+            var userIdClaim = User.FindFirst("nameid")?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            if (!User.IsInRole("Admin") /* "User" haina laata!!! */ && appointment.UserId != currentUserId) 
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+                return Unauthorized(new { message = "User identity not found in token." });
+            }
+
+            int currentUserId = int.Parse(userIdClaim);
+            var userRole = User.FindFirst("role")?.Value ?? User.FindFirst(ClaimTypes.Role)?.Value;
+
+            bool isAdmin = userRole == "Admin";
+            bool isOwner = appointment.UserId == currentUserId;
+
+            if (!isAdmin && !isOwner)
             {
                 return Forbid();
             }

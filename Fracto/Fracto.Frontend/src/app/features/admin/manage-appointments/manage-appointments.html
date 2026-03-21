@@ -45,7 +45,7 @@
           <tr *ngFor="let a of appointments">
             <td>{{ a.appointmentId }}</td>
             <td>{{ a.userId }}</td>
-            <td>{{ a.doctor?.name ?? '—' }}</td>
+            <td>{{ getDoctorName(a.doctorId) }}</td>
             <td>{{ a.appointmentDate | date:'mediumDate' }}</td>
             <td>{{ a.timeSlot }}</td>
             <td>

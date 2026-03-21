@@ -9,14 +9,12 @@
 </p>
 
 <div *ngIf="!loading">
-
   <p class="muted" *ngIf="appointments.length === 0">
     No appointments yet.
     <a routerLink="/search" style="color: #3b82f6;">Find a doctor →</a>
   </p>
 
   <div class="card appt-card" *ngFor="let a of appointments">
-
     <div class="appt-header">
       <div>
         <h3>
@@ -28,24 +26,30 @@
           {{ a.appointmentDate | date:'mediumDate' }} at {{ a.timeSlot }}
         </p>
       </div>
-      <span class="badge"
-            [class.badge-confirmed]="a.status === 'Confirmed'"
-            [class.badge-cancelled]="a.status === 'Cancelled'">
-        {{ a.status }}
-      </span>
+
+      <div class="status-container">
+        <span *ngIf="a.status === 'Cancelled'" class="badge badge-cancelled">Cancelled</span>
+
+        <span *ngIf="a.status !== 'Cancelled' && isPast(a.appointmentDate, a.timeSlot)" class="badge" style="background: #6b7280;">
+          Expired
+        </span>
+
+        <span *ngIf="a.status === 'Confirmed' && !isPast(a.appointmentDate, a.timeSlot)" class="badge badge-confirmed">
+          Confirmed
+        </span>
+      </div>
     </div>
 
     <div class="appt-actions">
-
       <button class="btn btn-danger btn-sm"
-              *ngIf="a.status === 'Confirmed' && !isPast(a.appointmentDate)"
+              *ngIf="a.status === 'Confirmed' && !isPast(a.appointmentDate, a.timeSlot)"
               (click)="cancel(a.appointmentId)">
         <i class="fas fa-xmark"></i> Cancel
       </button>
 
       <div class="rate-section"
-           *ngIf="a.status === 'Confirmed' && isPast(a.appointmentDate) && !ratedSet.has(a.appointmentId)">
-        <span class="muted">Rate:</span>
+           *ngIf="a.status === 'Confirmed' && isPast(a.appointmentDate, a.timeSlot) && !ratedSet.has(a.appointmentId)">
+        <span class="muted">Rate your visit:</span>
         <app-star-rating [interactive]="true"
                          [rating]="ratingMap[a.appointmentId] ?? 0"
                          (ratingSelected)="ratingMap[a.appointmentId] = $event">
@@ -60,7 +64,6 @@
       <span class="muted" *ngIf="ratedSet.has(a.appointmentId)">
         <i class="fas fa-circle-check" style="color: #10b981;"></i> Rated
       </span>
-
     </div>
   </div>
 </div>

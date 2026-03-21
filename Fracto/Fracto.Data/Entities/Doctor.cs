@@ -24,7 +24,6 @@ namespace Fracto.Data.Entities
 
         [Required]
         public int SpecializationId { get; set; }
-
         [ForeignKey("SpecializationId")]
         [JsonIgnore]
         public Specialization? Specialization { get; set; }

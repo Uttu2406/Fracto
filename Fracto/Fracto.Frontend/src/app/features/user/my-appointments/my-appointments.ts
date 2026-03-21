@@ -32,6 +32,7 @@ export class MyAppointmentsComponent implements OnInit {
     this.loading = true;
     this.apptSvc.getAll().subscribe({
       next: (data: any[]) => {
+        // Filter by user ID
         this.appointments = data.filter(a => a.userId === this.auth.getUserId());
         this.loading = false;
         this.cdr.detectChanges();
@@ -45,18 +46,24 @@ export class MyAppointmentsComponent implements OnInit {
   }
 
   cancel(id: number) {
-    if (!confirm('Are you sure you want to cancel?')) return;
+    // UI Confirmation
+    if (!confirm('Are you sure you want to cancel this appointment?')) return;
+
     this.apptSvc.cancel(id).subscribe({
       next: () => {
-        this.load();
+        this.load(); // Refresh list
         this.cdr.detectChanges();
       },
       error: (err: any) => alert(err.error?.message ?? 'Could not cancel.')
     });
   }
 
-  isPast(date: string): boolean {
-    return new Date(date) < new Date();
+  // Improved: Checks both Date and Time
+  isPast(dateStr: string, timeStr: string): boolean {
+    const apptDate = new Date(dateStr);
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    apptDate.setHours(hours, minutes, 0, 0);
+    return apptDate < new Date();
   }
 
   submitRating(appt: any) {
@@ -67,7 +74,10 @@ export class MyAppointmentsComponent implements OnInit {
       userId: this.auth.getUserId(),
       doctorRating: rating
     }).subscribe({
-      next: () => this.ratedSet.add(appt.appointmentId),
+      next: () => {
+        this.ratedSet.add(appt.appointmentId);
+        this.cdr.detectChanges();
+      },
       error: (err: any) => alert(err.error || 'Rating failed.')
     });
   }

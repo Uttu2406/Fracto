@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fracto.Data.Migrations
 {
     [DbContext(typeof(FractoDbContext))]
-    [Migration("20260315094308_InitialCreateAgain")]
-    partial class InitialCreateAgain
+    [Migration("20260321062003_DbReset")]
+    partial class DbReset
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

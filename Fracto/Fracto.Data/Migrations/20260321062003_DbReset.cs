@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Fracto.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreateAgain : Migration
+    public partial class DbReset : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

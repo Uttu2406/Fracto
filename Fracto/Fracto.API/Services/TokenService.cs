@@ -13,11 +13,12 @@ namespace Fracto.API.Services
 
         public string CreateToken(User user)
         {
+            
             var claims = new List<Claim>
-{
-                new Claim(ClaimTypes.Email, user.EmailAddress),
-                new Claim(ClaimTypes.Role, user.Role),
-                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString())
+            {
+                new Claim("email", user.EmailAddress),
+                new Claim("role", user.Role), 
+                new Claim("nameid", user.UserId.ToString())
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]!));
@@ -26,7 +27,7 @@ namespace Fracto.API.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddMinutes(Convert.ToDouble(_config["Jwt:DurationInMinutes"])),
+                Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(_config["Jwt:DurationInMinutes"])),
                 SigningCredentials = creds,
                 Issuer = _config["Jwt:Issuer"],
                 Audience = _config["Jwt:Audience"]
