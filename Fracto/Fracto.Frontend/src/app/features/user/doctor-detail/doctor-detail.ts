@@ -38,7 +38,6 @@ export class DoctorDetailComponent implements OnInit {
 
     this.doctorSvc.getById(Number(id)).subscribe({
       next: d => {
-        console.log('Doctor data :', d);
         this.doctor = d;
         this.loading = false;
         this.cdr.detectChanges();

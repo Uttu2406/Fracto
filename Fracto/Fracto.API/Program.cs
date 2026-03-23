@@ -8,14 +8,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// jwt key call? or smth like, rl
 var jwtKey = builder.Configuration["Jwt:Key"] ?? "";
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "";
 
 builder.Services.AddControllersWithViews();
 
-// This does something with Auth... || JWT Configure raixa!!!
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -35,13 +33,11 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// That connection thing (EF) : I have no idea how this works exactly so look into this later
 builder.Services.AddDbContext<FractoDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddEndpointsApiExplorer();
 
-// I have NO idea what this does and used this from a document i found (T~T)
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -70,14 +66,14 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddScoped<TokenService>(); // Hm?
+builder.Services.AddScoped<TokenService>();
 
 builder.Services.AddCors(options => {
     options.AddPolicy("AllowAngular", policy =>
         policy.WithOrigins("http://localhost:59750")
               .AllowAnyHeader()
               .AllowAnyMethod());
-}); // This tells backend to allow req froom angular waala project
+}); 
 
 var app = builder.Build();
 
@@ -88,14 +84,16 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseRouting(); // K garxxa? 
+app.UseRouting(); 
 
 app.UseCors("AllowAngular");
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers(); // This is api ko matra
-app.MapDefaultControllerRoute(); // This is mvc ko matra? Not sure
+app.UseStaticFiles(); 
+
+app.MapControllers(); 
+app.MapDefaultControllerRoute();
 
 app.Run();

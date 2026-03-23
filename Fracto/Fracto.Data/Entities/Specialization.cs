@@ -15,6 +15,6 @@ namespace Fracto.Data.Entities
         public string SpecializationName { get; set; }
 
 
-        public ICollection<Doctor>? Doctors { get; set; } = new List<Doctor>(); // ?
+        public ICollection<Doctor>? Doctors { get; set; } = new List<Doctor>();
     }
 }

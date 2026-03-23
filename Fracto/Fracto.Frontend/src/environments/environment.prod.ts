@@ -1,4 +1,4 @@
 export const environment = {
-  production: true, // set to true matra farak ho
+  production: true,
   apiUrl: 'https://localhost:7256/api'
 };

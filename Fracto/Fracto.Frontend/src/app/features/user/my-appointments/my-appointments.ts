@@ -32,7 +32,7 @@ export class MyAppointmentsComponent implements OnInit {
     this.loading = true;
     this.apptSvc.getAll().subscribe({
       next: (data: any[]) => {
-        // Filter by user ID
+     
         this.appointments = data.filter(a => a.userId === this.auth.getUserId());
         this.loading = false;
         this.cdr.detectChanges();
@@ -46,19 +46,19 @@ export class MyAppointmentsComponent implements OnInit {
   }
 
   cancel(id: number) {
-    // UI Confirmation
+    
     if (!confirm('Are you sure you want to cancel this appointment?')) return;
 
     this.apptSvc.cancel(id).subscribe({
       next: () => {
-        this.load(); // Refresh list
+        this.load();
         this.cdr.detectChanges();
       },
       error: (err: any) => alert(err.error?.message ?? 'Could not cancel.')
     });
   }
 
-  // Improved: Checks both Date and Time
+ 
   isPast(dateStr: string, timeStr: string): boolean {
     const apptDate = new Date(dateStr);
     const [hours, minutes] = timeStr.split(':').map(Number);

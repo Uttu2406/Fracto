@@ -16,8 +16,8 @@ export class AdminGuard implements CanActivate {
       return false;
     }
 
-    const payload = JSON.parse(atob(token.split('.')[1])); // splits form the dot '.' re
-    const role = payload['role']; // role lai taanxa
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    const role = payload['role']; 
 
     if (role === 'Admin')
     {

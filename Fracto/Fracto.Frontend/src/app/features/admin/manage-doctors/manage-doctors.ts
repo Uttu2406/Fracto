@@ -18,6 +18,8 @@ export class ManageDoctorsComponent implements OnInit {
   showForm = false;
   error = '';
   success = '';
+  selectedFile: File | null = null;
+  imagePreview: string | null = null;
 
   constructor(
     private doctorSvc: DoctorService,
@@ -41,10 +43,10 @@ export class ManageDoctorsComponent implements OnInit {
     this.doctorSvc.getAll().subscribe({
       next: (data: any) => {
         this.doctors = data;
-        this.error = ''; 
+        this.error = '';
         this.cdr.detectChanges();
       },
-      error: (err) => {
+      error: () => {
         this.error = 'Failed to load doctors. Your session might have expired.';
       }
     });
@@ -60,9 +62,7 @@ export class ManageDoctorsComponent implements OnInit {
   }
 
   getSpecName(specId: number): string {
-    if (!this.specializations || this.specializations.length === 0) {
-      return '...';
-    }
+    if (!this.specializations || this.specializations.length === 0) return '...';
     const spec = this.specializations.find(s => s.specializationId === specId);
     return spec ? spec.specializationName : 'N/A';
   }
@@ -88,39 +88,48 @@ export class ManageDoctorsComponent implements OnInit {
   }
 
   save() {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+    if (this.form.invalid) { this.form.markAllAsTouched(); return; }
 
-    const val = this.form.value;
-    const payload = {
-      ...val,
-      specializationId: Number(val.specializationId)
-    };
+    // Preserve existing rating when updating
+    const existingRating = this.doctors.find(d => d.doctorId === this.editingId)?.rating ?? null;
 
     const req = this.editingId
-      ? this.doctorSvc.update(this.editingId, { doctorId: this.editingId, ...payload })
-      : this.doctorSvc.create(payload);
+      ? this.doctorSvc.update(this.editingId, {
+        doctorId: this.editingId,
+        ...this.form.value,
+        rating: existingRating
+      })
+      : this.doctorSvc.create(this.form.value);
 
     req.subscribe({
-      next: () => {
-        this.load();
-        this.showForm = false;
-        this.success = 'Doctor saved successfully!';
-        setTimeout(() => this.success = '', 3000);
-        this.cdr.detectChanges();
+      next: (res: any) => {
+        const doctorId = this.editingId ?? res?.doctorId;
+        if (this.selectedFile && doctorId) {
+          this.doctorSvc.uploadImage(doctorId, this.selectedFile).subscribe({
+            next: () => {
+              this.selectedFile = null;
+              this.imagePreview = null;
+              this.load();
+              this.showForm = false;
+              this.success = 'Saved successfully!';
+              setTimeout(() => this.success = '', 2000);
+              this.cdr.detectChanges();
+            },
+            error: () => this.error = 'Image upload failed.'
+          });
+        } else {
+          this.load();
+          this.showForm = false;
+          this.success = 'Saved successfully!';
+          setTimeout(() => this.success = '', 2000);
+        }
       },
-      error: (err: any) => {
-        this.error = typeof err.error === 'string' ? err.error : 'Save operation failed.';
-        this.cdr.detectChanges();
-      }
+      error: (err: any) => this.error = typeof err.error === 'string' ? err.error : 'Save failed.'
     });
   }
 
   delete(id: number) {
     if (!confirm('Are you sure you want to delete this doctor record?')) return;
-
     this.doctorSvc.delete(id).subscribe({
       next: () => {
         this.load();
@@ -129,5 +138,18 @@ export class ManageDoctorsComponent implements OnInit {
       },
       error: (err: any) => alert(err.error || 'Delete failed.')
     });
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreview = e.target.result;
+        this.cdr.detectChanges();
+      };
+      reader.readAsDataURL(file);
+    }
   }
 }

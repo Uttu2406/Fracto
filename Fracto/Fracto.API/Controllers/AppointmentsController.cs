@@ -17,15 +17,15 @@ namespace Fracto.API.Controllers
         public AppointmentsController(FractoDbContext context) => _context = context;
 
 
-        [HttpGet("slots")] // UC108 : Slots? (yes) // Not working wtf // Update : Display gonnnn
+        [HttpGet("slots")] // UC108 : Slots
         [AllowAnonymous]
         public async Task<IActionResult> GetAvailableSlots(int doctorId, DateTime date)
         { 
-            var allSlots = new List<string> { "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00" }; // slots defn
+            var allSlots = new List<string> { "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00" };
 
             var bookedSlots = await _context.Appointments.Where(
                 a => a.DoctorId == doctorId &&a.AppointmentDate.Date == date.Date && a.Status != "Cancelled"
-            ).Select(a => a.TimeSlot).ToListAsync(); // elle chai booked slots check garxa ig
+            ).Select(a => a.TimeSlot).ToListAsync();
 
             var availableSlots = allSlots.Except(bookedSlots).ToList();
 
@@ -58,7 +58,7 @@ namespace Fracto.API.Controllers
                 return BadRequest("Invalid Date: Appointments cannot be booked for the past.");
             }
 
-            var isSlotTaken = await _context.Appointments.AnyAsync(a => // correct eror paxi hai (rer1) // Done :)
+            var isSlotTaken = await _context.Appointments.AnyAsync(a =>
                 a.DoctorId == appointment.DoctorId &&
                 a.AppointmentDate.Date == appointment.AppointmentDate.Date &&
                 a.TimeSlot == appointment.TimeSlot &&
@@ -69,7 +69,7 @@ namespace Fracto.API.Controllers
                 return BadRequest("This slot is no longer available.");
             }
 
-            appointment.Status = "Confirmed"; // yay
+            appointment.Status = "Confirmed"; 
 
             _context.Appointments.Add(appointment);
             await _context.SaveChangesAsync();
@@ -93,7 +93,7 @@ namespace Fracto.API.Controllers
         }
 
 
-        [HttpPut("{id}/cancel")] // UC111, UC207 : Vana pencil timro appointment cancel (please dont kick me)
+        [HttpPut("{id}/cancel")] // UC111, UC207 : Canel Appointment
         public async Task<IActionResult> CancelAppointment(int id)
         {
             var appointment = await _context.Appointments.FindAsync(id);
@@ -136,3 +136,5 @@ namespace Fracto.API.Controllers
 
     }
 }
+
+

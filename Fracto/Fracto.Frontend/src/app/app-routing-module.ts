@@ -18,8 +18,8 @@ import { ManageSpecializationsComponent } from './features/admin/manage-speciali
 import { ManageAppointmentsComponent } from './features/admin/manage-appointments/manage-appointments';
 
 
-import { AuthGuard } from './core/guards/auth.guard'; // rb1
-import { AdminGuard } from './core/guards/admin.guard'; // rb2
+import { AuthGuard } from './core/guards/auth.guard'; 
+import { AdminGuard } from './core/guards/admin.guard'; 
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -27,10 +27,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'doctor/:id', component: DoctorDetailComponent }, // :id means any number, simpal
+  { path: 'doctor/:id', component: DoctorDetailComponent },
 
   
-  { path: 'my-appointments', component: MyAppointmentsComponent, canActivate: [AuthGuard] }, // logged in banau ellai
+  { path: 'my-appointments', component: MyAppointmentsComponent, canActivate: [AuthGuard] }, 
 
   { path: 'admin', component: DashboardComponent, canActivate: [AdminGuard] },
   { path: 'admin/users', component: ManageUsersComponent, canActivate: [AdminGuard] },
@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'admin/specializations', component: ManageSpecializationsComponent, canActivate: [AdminGuard] },
   { path: 'admin/appointments', component: ManageAppointmentsComponent, canActivate: [AdminGuard] },
 
-  { path: '**', redirectTo: 'search' } // banish to search :(
+  { path: '**', redirectTo: 'search' } 
 ];
 
 

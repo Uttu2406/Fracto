@@ -27,7 +27,6 @@ namespace Fracto.Data.Entities
         [Required]
         [Range(1, 5)]
         public int DoctorRating { get; set; } 
-        // Note to self: No fk here because we already declared one above. Cant have >1 fk, ig.
        
     }
 }

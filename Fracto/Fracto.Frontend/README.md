@@ -1,59 +1,69 @@
-# FractoFrontend
+# Fracto — Online Doctor Appointment Booking Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.1.
+Fracto is a full-stack web application that allows users to search for doctors, book appointments, and manage their healthcare needs online.
 
-## Development server
+## Tech Stack
 
-To start a local development server, run:
+- **Frontend:** Angular 21
+- **Backend:** ASP.NET Core Web API (.NET 8)
+- **Database:** SQL Server with Entity Framework Core
+- **Authentication:** JWT (JSON Web Tokens)
+- **API Documentation:** Swagger UI
 
+## Features
+
+### User
+- Register and login securely
+- Search doctors by city, specialization, and rating
+- View doctor profiles and available time slots
+- Book and cancel appointments
+- Rate doctors after completed appointments
+
+### Admin
+- Manage users, doctors, and specializations (full CRUD)
+- View and cancel all appointments
+- Dashboard with system statistics
+
+## Project Structure
+```
+Fracto/
+├── Fracto.API/          # ASP.NET Core Web API
+│   ├── Controllers/     # API endpoints
+│   ├── Services/        # TokenService (JWT)
+│   └── Program.cs       # App configuration
+├── Fracto.Data/
+│   ├── Context/         # EF Core DbContext
+│   └── Entities/        # Database models
+└── Fracto.Frontend/     # Angular 21 app
+    └── src/app/
+        ├── core/        # Services, guards, interceptors
+        ├── features/    # Pages (auth, user, admin)
+        └── shared/      # Reusable components
+```
+
+## Running the Project
+
+### Backend
 ```bash
+cd Fracto.API
+dotnet run
+```
+
+### Frontend
+```bash
+cd Fracto.Frontend
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:59750` in your browser.
 
-## Code scaffolding
+## Test Credentials
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Admin:** admin@fracto.com / Password123!
+- **User:** testuser@gmail.com / User123!
 
+## Running Tests
 ```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
+cd Fracto.Frontend
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

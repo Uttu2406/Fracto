@@ -52,30 +52,32 @@
     </div>
 
     <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let s of specs">
-            <td>{{ s.specializationId }}</td>
-            <td>{{ s.specializationName }}</td>
-            <td>
-              <button class="btn btn-secondary btn-sm" (click)="openEdit(s)">
-                <i class="fas fa-pen"></i> Edit
-              </button>
-              <button class="btn btn-danger btn-sm" style="margin-left: 6px;" (click)="delete(s.specializationId)">
-                <i class="fas fa-trash"></i> Delete
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of specs">
+              <td>{{ s.specializationId }}</td>
+              <td>{{ s.specializationName }}</td>
+              <td>
+                <button class="btn btn-secondary btn-sm" (click)="openEdit(s)">
+                  <i class="fas fa-pen"></i> Edit
+                </button>
+                <button class="btn btn-danger btn-sm" style="margin-left: 6px;" (click)="delete(s.specializationId)">
+                  <i class="fas fa-trash"></i> Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
 
-  </div>
+    </div>
 </div>

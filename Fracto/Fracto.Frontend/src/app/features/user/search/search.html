@@ -37,11 +37,6 @@
 
       </div>
 
-      <!--<div class="form-group">
-        <label>Date</label>
-        <input class="form-control" type="date" formControlName="date" [min]="today" />
-      </div>-->
-
     </div>
 
     <div class="filter-actions">
@@ -76,7 +71,8 @@
          [routerLink]="['/doctor', d.doctorId]"
          style="cursor:pointer">
 
-      <div class="doctor-avatar">{{ d.name.charAt(0) }}</div>
+      <div class="doctor-avatar" *ngIf="!d.imagePath">{{ d.name.charAt(0) }}</div>
+      <img *ngIf="d.imagePath" [src]="'https://localhost:7256' + d.imagePath" class="doctor-avatar-img" alt="Doctor" />
 
       <div class="doctor-info">
         <h3>{{ d.name }}</h3>

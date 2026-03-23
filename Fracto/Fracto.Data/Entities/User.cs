@@ -26,7 +26,7 @@ namespace Fracto.Data.Entities
         public string Role { get; set; }
 
 
-        public ICollection<Appointment>? Appointments { get; set; } = new List<Appointment>(); // ? = instead of all data chaiyeko matra bolauxa
+        public ICollection<Appointment>? Appointments { get; set; } = new List<Appointment>();
 
     }
 }

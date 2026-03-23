@@ -51,12 +51,12 @@ namespace Fracto.API.Controllers
         {
             var currentAdminId = User.FindFirst("UserId")?.Value;
 
-            if (id.ToString() == currentAdminId) // NOt deleting self hehe, had to learn the hard way
+            if (id.ToString() == currentAdminId)
             {
                 return BadRequest("You cannot delete your own admin account.");
             }
 
-            var hasAppointments = await _context.Appointments.AnyAsync(a => a.UserId == id); // NOT deleting plebs with appointment
+            var hasAppointments = await _context.Appointments.AnyAsync(a => a.UserId == id);
             if (hasAppointments)
             {
                 return BadRequest("Cannot delete user with existing appointments. Cancel them first.");
@@ -77,3 +77,5 @@ namespace Fracto.API.Controllers
 
     } 
 }
+
+

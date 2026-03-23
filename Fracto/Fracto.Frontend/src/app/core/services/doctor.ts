@@ -58,4 +58,10 @@ export class DoctorService {
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.api}/${id}`);
   }
+
+  uploadImage(doctorId: number, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post(`${this.api}/${doctorId}/upload`, formData);
+  }
 }

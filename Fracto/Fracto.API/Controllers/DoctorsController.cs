@@ -19,7 +19,7 @@ namespace Fracto.API.Controllers
         [HttpPost] // UC204 : DCreate
         public async Task<IActionResult> CreateDoctor(Doctor doctor)
         {
-            var specExists = await _context.Specializations // check specs
+            var specExists = await _context.Specializations 
                 .AnyAsync(s => s.SpecializationId == doctor.SpecializationId);
 
             if (!specExists)
@@ -45,7 +45,7 @@ namespace Fracto.API.Controllers
             if (id != doctor.DoctorId) return BadRequest("ID mismatch.");
 
             var specExists = await _context.Specializations
-                .AnyAsync(s => s.SpecializationId == doctor.SpecializationId); // cehcks specs
+                .AnyAsync(s => s.SpecializationId == doctor.SpecializationId);
 
             if (!specExists)
             {
@@ -65,7 +65,7 @@ namespace Fracto.API.Controllers
                 throw;
             }
 
-            return Ok("Doctor profile updated successfully.");
+            return Ok(new { message = "Doctor profile updated successfully.", doctorId = id });
         }
 
         [HttpDelete("{id}")] // UC204 : DDelete
@@ -82,7 +82,7 @@ namespace Fracto.API.Controllers
 
 
         [HttpGet("search")] // UC102, UC103, UC105, UC106 : Filter haru as mentioned
-        [AllowAnonymous] // Bypassable re yayayay
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Doctor>>> SearchDoctors(
             [FromQuery] string? city,
             [FromQuery] int? specializationId,
@@ -93,25 +93,21 @@ namespace Fracto.API.Controllers
         {
             var query = _context.Doctors.Include(d => d.Specialization).AsQueryable();
 
-            // UC102 : City matra
             if (!string.IsNullOrEmpty(city))
             {
                 query = query.Where(d => d.City.ToLower() == city.ToLower());
             }
 
-            // UC103 : Specialization matra
             if (specializationId.HasValue)
             {
                 query = query.Where(d => d.SpecializationId == specializationId.Value);
             }
 
-            // UC106 : Ratings matra
             if (minRating.HasValue)
             {
                 query = query.Where(d => d.Rating != null && d.Rating >= minRating.Value);
             }
 
-            // UC104 : Date re but refer to this again paxi
             if (date.HasValue)
             {
                 if (date.Value.Date < DateTime.Now.Date)
@@ -120,7 +116,7 @@ namespace Fracto.API.Controllers
                 }
 
                 query = query.Where(d => d.Appointments.Count(a => 
-                a.AppointmentDate.Date == date.Value.Date && a.Status != "Cancelled") < 8); // Null thing fix vaisakyo if you forgot
+                a.AppointmentDate.Date == date.Value.Date && a.Status != "Cancelled") < 8);
             }
 
             var results = await query.ToListAsync();
@@ -134,7 +130,7 @@ namespace Fracto.API.Controllers
 
 
         [HttpGet("{id}")] // UC107 : Allow specific doctor matra
-        [AllowAnonymous] // Bypassable re yayayay
+        [AllowAnonymous] 
         public async Task<ActionResult<Doctor>> GetDoctor(int id)
         {
             var doctor = await _context.Doctors.Include(d => d.Specialization).FirstOrDefaultAsync(d => d.DoctorId == id);
@@ -145,6 +141,37 @@ namespace Fracto.API.Controllers
             }
 
             return Ok(doctor);
+        }
+
+
+        [HttpPost("{id}/upload")]
+        public async Task<IActionResult> UploadImage(int id, IFormFile file)
+        {
+            var doctor = await _context.Doctors.FindAsync(id);
+            if (doctor == null) return NotFound();
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No file uploaded.");
+
+            
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+            Directory.CreateDirectory(uploadsFolder);
+
+            
+            var fileName = $"doctor_{id}_{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+           
+            doctor.ImagePath = $"/uploads/{fileName}";
+            await _context.SaveChangesAsync();
+
+            return Ok(new { imagePath = doctor.ImagePath });
         }
 
 

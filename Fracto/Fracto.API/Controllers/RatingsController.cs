@@ -17,7 +17,6 @@ namespace Fracto.API.Controllers
         [HttpPost]
         public async Task<IActionResult> PostRating(Rating rating)
         {
-            // Check if user already rated this doctor
             var already = await _context.Ratings
                 .AnyAsync(r => r.DoctorId == rating.DoctorId && r.UserId == rating.UserId);
 
@@ -27,7 +26,6 @@ namespace Fracto.API.Controllers
             _context.Ratings.Add(rating);
             await _context.SaveChangesAsync();
 
-            // Recalculate doctor's average rating
             var avg = await _context.Ratings
                 .Where(r => r.DoctorId == rating.DoctorId)
                 .AverageAsync(r => (double)r.DoctorRating);
@@ -42,4 +40,9 @@ namespace Fracto.API.Controllers
             return Ok(new { message = "Rating submitted!", averageRating = avg });
         }
     }
+
+
+
 }
+
+

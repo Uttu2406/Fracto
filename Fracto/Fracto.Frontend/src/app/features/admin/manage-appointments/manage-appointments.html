@@ -29,43 +29,45 @@
     </p>
 
     <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>User ID</th>
-            <th>Doctor</th>
-            <th>Date</th>
-            <th>Slot</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let a of appointments">
-            <td>{{ a.appointmentId }}</td>
-            <td>{{ a.userId }}</td>
-            <td>{{ getDoctorName(a.doctorId) }}</td>
-            <td>{{ a.appointmentDate | date:'mediumDate' }}</td>
-            <td>{{ a.timeSlot }}</td>
-            <td>
-              <span class="badge"
-                    [class.badge-confirmed]="a.status === 'Confirmed'"
-                    [class.badge-cancelled]="a.status === 'Cancelled'">
-                {{ a.status }}
-              </span>
-            </td>
-            <td>
-              <button class="btn btn-danger btn-sm"
-                      *ngIf="a.status === 'Confirmed'"
-                      (click)="cancel(a.appointmentId)">
-                <i class="fas fa-xmark"></i> Cancel
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User ID</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Slot</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of appointments">
+              <td>{{ a.appointmentId }}</td>
+              <td>{{ a.userId }}</td>
+              <td>{{ getDoctorName(a.doctorId) }}</td>
+              <td>{{ a.appointmentDate | date:'mediumDate' }}</td>
+              <td>{{ a.timeSlot }}</td>
+              <td>
+                <span class="badge"
+                      [class.badge-confirmed]="a.status === 'Confirmed'"
+                      [class.badge-cancelled]="a.status === 'Cancelled'">
+                  {{ a.status }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-danger btn-sm"
+                        *ngIf="a.status === 'Confirmed'"
+                        (click)="cancel(a.appointmentId)">
+                  <i class="fas fa-xmark"></i> Cancel
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
 
-  </div>
+    </div>
 </div>

@@ -15,7 +15,7 @@ namespace Fracto.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("Fracto"); // Schemathing
+            modelBuilder.HasDefaultSchema("Fracto");
         }
     }
 }

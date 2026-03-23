@@ -65,3 +65,12 @@
     background: #3b82f6;
     color: white;
   }
+
+.avatar-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+

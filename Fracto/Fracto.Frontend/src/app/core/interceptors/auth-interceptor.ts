@@ -12,7 +12,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token = localStorage.getItem('token'); // local db bata token
+    const token = localStorage.getItem('token');
 
     if (!token) {
       return next.handle(req);
@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
     const requestWithToken = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`) // does smth, refer to doc
+      headers: req.headers.set('Authorization', `Bearer ${token}`) 
     });
 
    

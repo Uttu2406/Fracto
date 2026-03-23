@@ -166,10 +166,16 @@ body {
   color: #fca5a5;
 }
 
-/* Table for admin pages */
+/* Table that lists records in admin pages */
+.table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 600px;
 }
 
 /* Table cells */

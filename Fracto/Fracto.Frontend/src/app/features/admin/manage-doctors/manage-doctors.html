@@ -39,6 +39,15 @@
               </option>
             </select>
           </div>
+
+          <div class="form-group" *ngIf="editingId">
+            <label>Profile Image</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+            <div *ngIf="imagePreview" style="margin-top: 8px;">
+              <img [src]="imagePreview" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;" />
+            </div>
+          </div>
+
         </div>
         <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
           <button class="btn btn-success btn-sm" type="submit">Save</button>
@@ -48,34 +57,36 @@
     </div>
 
     <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>City</th>
-            <th>Specialization</th>
-            <th>Rating</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let d of doctors">
-            <td>{{ d.doctorId }}</td>
-            <td>{{ d.name }}</td>
-            <td>{{ d.city }}</td>
-            <td>{{ getSpecName(d.specializationId) }}</td>
-            <td>
-              <span *ngIf="d.rating"><i class="fas fa-star" style="color: #fbbf24;"></i> {{ d.rating }}</span>
-              <span class="muted" *ngIf="!d.rating">—</span>
-            </td>
-            <td>
-              <button class="btn btn-secondary btn-sm" (click)="openEdit(d)">Edit</button>
-              <button class="btn btn-danger btn-sm" (click)="delete(d.doctorId)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>Specialization</th>
+              <th>Rating</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let d of doctors">
+              <td>{{ d.doctorId }}</td>
+              <td>{{ d.name }}</td>
+              <td>{{ d.city }}</td>
+              <td>{{ getSpecName(d.specializationId) }}</td>
+              <td>
+                <span *ngIf="d.rating"><i class="fas fa-star" style="color: #fbbf24;"></i> {{ d.rating }}</span>
+                <span class="muted" *ngIf="!d.rating">—</span>
+              </td>
+              <td>
+                <button class="btn btn-secondary btn-sm" (click)="openEdit(d)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="delete(d.doctorId)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
